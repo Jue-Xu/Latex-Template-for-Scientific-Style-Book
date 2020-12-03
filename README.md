@@ -26,3 +26,6 @@ sub makeglo2gls {
     system("makeindex -s '$_[0]'.ist -t '$_[0]'.glg -o '$_[0]'.gls '$_[0]'.glo");
 }
 ```
+
+## Preview
+https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/blob/main/notes.pdf
