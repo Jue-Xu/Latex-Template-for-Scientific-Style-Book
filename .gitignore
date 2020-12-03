@@ -1,7 +1,7 @@
 .DS_Store
 ./chapter/.DS_Store
 ./figure/.DS_Store
-
+./figure/.ipynb_checkpoints
 
 notes.aux
 notes.bbl
