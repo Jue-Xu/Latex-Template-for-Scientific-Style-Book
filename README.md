@@ -7,7 +7,13 @@
 - bib, hyperlink
 - index, glossary
 
-## Related plugins
+## Tools
+
+### VSCode
+extension:
+setting:
+
+###  lualatex and latexmk
 
 .latexmkrc
 ```
