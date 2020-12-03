@@ -1,0 +1,164 @@
+% !TEX root = ./notes.tex
+\documentclass[11pt,twoside]{book}
+\usepackage[mono=false]{libertine} % new linux font, ignore mono
+
+% avoid bugs with xy-pic, luatex, pdftex version
+% \input{luatex-pdf}
+\usepackage{luatex85}
+% \usepackage[all]{xy}
+
+%\renewcommand{\baselinestretch}{1.05}
+\usepackage{amsmath,amsthm,amssymb,mathrsfs,amsfonts,dsfont}
+\usepackage{epsfig,graphicx}
+\usepackage{tabularx}
+\usepackage{blkarray}
+\usepackage{slashed}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{caption}
+% \usepackage{fullpage}
+\usepackage[toc,title,titletoc,header]{appendix}
+\usepackage{color}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{hyperref}
+\hypersetup{
+    %citecolor=black,
+    colorlinks=true,
+    % linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\usepackage[capitalise]{cleveref}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage{cancel}
+\usepackage{physics}
+\usepackage{qcircuit}
+\usepackage{tikz}
+\usepackage{simpler-wick}
+\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage{braids}
+\usepackage[linesnumbered,ruled,vlined,algosection]{algorithm2e}
+\SetCommentSty{textsf}
+% \usepackage{epigraph}
+% \epigraphwidth=0.9\linewidth
+
+\topmargin-1.2cm
+% \headheight0.0cm
+\headheight13.6pt
+\headsep1.2cm
+\oddsidemargin0.0cm
+\evensidemargin0.0cm
+\textheight23.0cm
+\textwidth16.9cm
+\footskip1.0cm
+
+\usepackage{thmtools}
+\declaretheorem[numberwithin=chapter]{theorem}
+\declaretheorem[numberwithin=chapter]{axiom}
+\declaretheorem[numberwithin=chapter]{lemma}
+\declaretheorem[numberwithin=chapter]{proposition}
+\declaretheorem[numberwithin=chapter]{claim}
+\declaretheorem[numberwithin=chapter]{conjecture}
+\declaretheorem[sibling=theorem]{corollary}
+\declaretheorem[numberwithin=chapter, style=definition]{definition}
+\declaretheorem[numberwithin=chapter, style=definition]{problem}
+\declaretheorem[numberwithin=chapter, style=definition]{example}
+\declaretheorem[numberwithin=chapter, style=definition]{exercise}
+\declaretheorem[numberwithin=chapter, style=definition]{observation}
+\declaretheorem[numberwithin=chapter, style=definition]{fact}
+\declaretheorem[numberwithin=chapter, style=definition]{construction}
+\declaretheorem[numberwithin=chapter, style=definition]{remark}
+\declaretheorem[numberwithin=chapter, style=remark]{question}
+
+% \theoremstyle{plain}
+% \newtheorem{theorem}{Theorem}[chapter]
+% \newtheorem{remark}{Remark}[chapter]
+% \newtheorem{claim}{Claim}[chapter]
+% \newtheorem{corollary}{Corollary}[theorem]
+% \newtheorem{lemma}{Lemma}[chapter]
+% \newtheorem{question}{Question}[chapter]
+% \newtheorem{proposition}{Proposition}[chapter]
+% \newtheorem{conjecture}{Conjecture}[chapter]
+% \theoremstyle{definition}
+% \newtheorem{example}{Example}[chapter]
+% \newtheorem{exercise}{Exercise}[chapter]
+% \newtheorem{definition}{Definition}[chapter]
+% \newtheorem{observation}{Observation}[chapter]
+% \newtheorem{fact}{Fact}[chapter]
+% \newtheorem{construction}{Construction}[chapter]
+
+\newenvironment{solution}
+    {\renewcommand\qedsymbol{$\square$}\color{blue}\begin{adjustwidth}{0em}{2em}\begin{proof}[\textit Solution.~]}
+    {\end{proof}\end{adjustwidth}}
+
+\usepackage{makeidx}
+\usepackage[nottoc]{tocbibind}
+% \renewcommand{\index}[1]{\index{#1} \emph{#1}}
+\newcommand{\myindex}[1]{\index{#1} \emph{#1}}
+\makeindex
+\usepackage[totoc]{idxlayout} % add index to toc
+
+\usepackage{fancyhdr}
+\pagestyle{fancy} % enable fancy page style
+\renewcommand{\headrulewidth}{0.0pt} % comment if you want the rule
+\fancyhf{} % clear header and footer
+\fancyhead[re]{\slshape\nouppercase{\leftmark}}
+\fancyhead[lo]{\slshape\nouppercase{\rightmark}}
+\fancyhead[ro,le]{\thepage} % page number left(odd), right(even)
+
+% \usepackage[numbers]{natbib}
+% \bibliographystyle{plainnat} 
+
+
+\usepackage[doi=false,url=false,isbn=false,style=alphabetic,backend=biber]{biblatex}
+\addbibresource{bib.bib}
+
+\newbibmacro{string+doiurlisbn}[1]{%
+  \iffieldundef{doi}{%
+    \iffieldundef{url}{%
+      \iffieldundef{isbn}{%
+        \iffieldundef{issn}{%
+          #1%
+        }{%
+          \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
+        }%
+      }{%
+        \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
+      }%
+    }{%
+      \href{\thefield{url}}{#1}%
+    }%
+  }{%
+    \href{http://dx.doi.org/\thefield{doi}}{#1}%
+  }%
+}
+
+% \DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{#1}}
+% \DeclareFieldFormat[article,incollection]{title}{\usebibmacro{string+doiurlisbn}{\mkbibquote{#1}}}
+
+% https://tex.stackexchange.com/questions/94089/remove-quotes-from-inbook-reference-title-with-biblatex
+\DeclareFieldFormat[article,incollection,inproceedings,book,misc]{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
+% https://tex.stackexchange.com/questions/454672/biblatex-journal-name-non-italic
+\DeclareFieldFormat{journaltitle}{#1\isdot}
+\DeclareFieldFormat{booktitle}{#1\isdot}
+% https://tex.stackexchange.com/questions/10682/suppress-in-biblatex
+\renewbibmacro{in:}{}
+
+% \renewbibmacro{arxiv:}{}
+% https://tex.stackexchange.com/questions/367197/shorten-biblatex-output
+% \DeclareFieldFormat{eprint:arxiv}{%
+% %  arXiv\addcolon\space
+%   \ifhyperref
+%     {\href{http://arxiv.org/\abx@arxivpath/#1}{%
+%        \nolinkurl{#1}%
+%        \iffieldundef{eprintclass}
+%          {}
+%          {\addspace\texttt{\mkbibbrackets{\thefield{eprintclass}}}}}}
+%     {\nolinkurl{#1}
+%      \iffieldundef{eprintclass}
+%        {}
+%        {\addspace\texttt{\mkbibbrackets{\thefield{eprintclass}}}}}}

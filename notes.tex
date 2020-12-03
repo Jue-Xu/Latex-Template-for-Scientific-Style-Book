@@ -1,0 +1,46 @@
+\input{./preamble.tex}
+\input{./glossaries.tex}
+\input{./macros.tex}
+
+\begin{document}
+
+\title{\bf \huge Study Notes}
+\author{Author}
+\maketitle
+\setcounter{tocdepth}{2}
+
+\tableofcontents
+\listoffigures
+% \listoftables
+\listoftheorems[ignoreall,show={theorem}]
+\renewcommand{\listtheoremname}{List of Definitions}
+\listoftheorems[ignoreall,show={definition}]
+
+\printglossaries
+
+%%%%%%%%%%%%%%%Content%%%%%%%%%%%%%%%
+% \mainmatter % separat the number of toc and mainmatter
+\input{./chapter/preface.tex}
+
+\part{Mathematics}
+\input{./chapter/discrete_math.tex}
+
+\part{Computer Science}
+% \input{./chapter/algorithms.tex}
+
+
+\part{Physics}
+% \input{./chapter/classical_mechanics.tex}
+
+\begin{appendices}
+\input{./chapter/appendix_formula.tex}
+\end{appendices}
+
+\backmatter
+
+%%%%%%%%%%%%%%% Reference %%%%%%%%%%%%%%%
+
+\printbibliography
+\printindex
+
+\end{document}
