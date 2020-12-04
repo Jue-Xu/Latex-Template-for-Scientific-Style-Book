@@ -3,9 +3,10 @@
 ## Features
 
 - link of definitions and theorems
-- toc, theorem, definition
+- toc, list of theorems, definitions
 - bib, hyperlink
 - index, glossary
+- clean
 
 ## Tools
 
