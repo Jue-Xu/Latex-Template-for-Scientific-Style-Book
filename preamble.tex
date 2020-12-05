@@ -43,8 +43,6 @@
 \usepackage{braids}
 \usepackage[linesnumbered,ruled,vlined,algosection]{algorithm2e}
 \SetCommentSty{textsf}
-% \usepackage{epigraph}
-% \epigraphwidth=0.9\linewidth
 
 \topmargin-1.2cm
 % \headheight0.0cm
@@ -74,30 +72,12 @@
 \declaretheorem[numberwithin=chapter, style=definition]{remark}
 \declaretheorem[numberwithin=chapter, style=remark]{question}
 
-% \theoremstyle{plain}
-% \newtheorem{theorem}{Theorem}[chapter]
-% \newtheorem{remark}{Remark}[chapter]
-% \newtheorem{claim}{Claim}[chapter]
-% \newtheorem{corollary}{Corollary}[theorem]
-% \newtheorem{lemma}{Lemma}[chapter]
-% \newtheorem{question}{Question}[chapter]
-% \newtheorem{proposition}{Proposition}[chapter]
-% \newtheorem{conjecture}{Conjecture}[chapter]
-% \theoremstyle{definition}
-% \newtheorem{example}{Example}[chapter]
-% \newtheorem{exercise}{Exercise}[chapter]
-% \newtheorem{definition}{Definition}[chapter]
-% \newtheorem{observation}{Observation}[chapter]
-% \newtheorem{fact}{Fact}[chapter]
-% \newtheorem{construction}{Construction}[chapter]
-
 \newenvironment{solution}
     {\renewcommand\qedsymbol{$\square$}\color{blue}\begin{adjustwidth}{0em}{2em}\begin{proof}[\textit Solution.~]}
     {\end{proof}\end{adjustwidth}}
 
 \usepackage{makeidx}
 \usepackage[nottoc]{tocbibind}
-% \renewcommand{\index}[1]{\index{#1} \emph{#1}}
 \newcommand{\myindex}[1]{\index{#1} \emph{#1}}
 \makeindex
 \usepackage[totoc]{idxlayout} % add index to toc
@@ -109,10 +89,6 @@
 \fancyhead[re]{\slshape\nouppercase{\leftmark}}
 \fancyhead[lo]{\slshape\nouppercase{\rightmark}}
 \fancyhead[ro,le]{\thepage} % page number left(odd), right(even)
-
-% \usepackage[numbers]{natbib}
-% \bibliographystyle{plainnat} 
-
 
 \usepackage[doi=false,url=false,isbn=false,style=alphabetic,backend=biber]{biblatex}
 \addbibresource{bib.bib}
@@ -137,9 +113,6 @@
   }%
 }
 
-% \DeclareFieldFormat{title}{\usebibmacro{string+doiurlisbn}{#1}}
-% \DeclareFieldFormat[article,incollection]{title}{\usebibmacro{string+doiurlisbn}{\mkbibquote{#1}}}
-
 % https://tex.stackexchange.com/questions/94089/remove-quotes-from-inbook-reference-title-with-biblatex
 \DeclareFieldFormat[article,incollection,inproceedings,book,misc]{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
 % https://tex.stackexchange.com/questions/454672/biblatex-journal-name-non-italic
@@ -148,17 +121,3 @@
 % https://tex.stackexchange.com/questions/10682/suppress-in-biblatex
 \renewbibmacro{in:}{}
 
-% \renewbibmacro{arxiv:}{}
-% https://tex.stackexchange.com/questions/367197/shorten-biblatex-output
-% \DeclareFieldFormat{eprint:arxiv}{%
-% %  arXiv\addcolon\space
-%   \ifhyperref
-%     {\href{http://arxiv.org/\abx@arxivpath/#1}{%
-%        \nolinkurl{#1}%
-%        \iffieldundef{eprintclass}
-%          {}
-%          {\addspace\texttt{\mkbibbrackets{\thefield{eprintclass}}}}}}
-%     {\nolinkurl{#1}
-%      \iffieldundef{eprintclass}
-%        {}
-%        {\addspace\texttt{\mkbibbrackets{\thefield{eprintclass}}}}}}
