@@ -31,6 +31,6 @@ sub makeglo2gls {
 ```
 
 ## Preview
-[Minimal working example](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/blob/main/notes.pdf)
+[Minimal working example](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/blob/main/notes_template.pdf)
 
 my study notes
