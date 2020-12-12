@@ -8,15 +8,17 @@
 - index, glossary
 - clean
 
-## Tools
+## Related Tools
 
 ### VSCode
-extension:
-setting:
+Extension: Latex workshop
+
+Setting:
+```
+```
 
 ###  lualatex and latexmk
-
-.latexmkrc
+`.latexmkrc` configuration file
 ```
 $pdflatex = 'lualatex -synctex=1 -interaction=nonstopmode --shell-escape %O %S';
 @generated_exts = (@generated_exts, 'synctex.gz');
@@ -29,4 +31,6 @@ sub makeglo2gls {
 ```
 
 ## Preview
-https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/blob/main/notes.pdf
+[Minimal working example](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/blob/main/notes.pdf)
+
+my study notes

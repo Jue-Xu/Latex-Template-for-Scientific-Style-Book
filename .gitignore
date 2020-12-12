@@ -22,6 +22,7 @@ notes.bcf
 notes.run.xml
 __latexindent_temp.tex
 
+*.ist
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
