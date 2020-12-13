@@ -11,7 +11,7 @@
 ## Related Tools
 
 ### VSCode
-Extension: Latex workshop
+Extension: [Latex Workshop by James Yu](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 Setting:
 ```
