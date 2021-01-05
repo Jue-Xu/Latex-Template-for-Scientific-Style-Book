@@ -2,7 +2,7 @@
 
 ## Features
 
-- link of definitions and theorems
+- Cross-refs: link of definitions and theorems
 - toc, list of theorems, definitions
 - bib, hyperlink
 - index, glossary
