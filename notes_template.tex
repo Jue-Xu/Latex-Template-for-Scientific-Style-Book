@@ -1,22 +1,37 @@
 \input{./preamble.tex}
-\input{./glossaries.tex}
+% \input{./glossaries.tex}
 \input{./macros.tex}
 
 \begin{document}
 
 \title{\bf \huge Study Notes}
 \author{Author}
+\date{Update on \today}
 \maketitle
 \setcounter{tocdepth}{2}
 
+\begin{multicols}{2}
 \tableofcontents
+\end{multicols}
+
 \listoffigures
 % \listoftables
-\listoftheorems[ignoreall,show={theorem}]
-\renewcommand{\listtheoremname}{List of Definitions}
-\listoftheorems[ignoreall,show={definition}]
 
-\printglossaries
+\begin{multicols}{2}
+\listoftheorems[ignoreall,show={theorem}]
+\end{multicols}
+\renewcommand{\listtheoremname}{List of Definitions}
+\begin{multicols}{2}
+\listoftheorems[ignoreall,show={definition}]
+\end{multicols}
+
+% \printglossaries
+% bib2gls
+% \printunsrtglossaries % print all types
+\printunsrtglossary[type={abbreviations},title=List of Abbreviations,style=listgroup]
+% \printunsrtglossary[type={abbreviations},title=List of Abbreviations,style=listhypergroup] % doesn't work
+\printunsrtglossary[type={symbols},title=List of Symbols,style=listgroup]
+% \printunsrtglossary % main entry
 
 %%%%%%%%%%%%%%%Content%%%%%%%%%%%%%%%
 % \mainmatter % separat the number of toc and mainmatter
@@ -26,10 +41,12 @@
 \input{./chapter/discrete_math.tex}
 
 \part{Computer Science}
+% \input{./chapter/complexity.tex}
+\input{./chapter/machine_learning.tex}
 % \input{./chapter/algorithms.tex}
 
-
 \part{Physics}
+\input{./chapter/quantum_mechanics.tex}
 % \input{./chapter/quantum_field_theory.tex}
 
 \begin{appendices}
@@ -40,7 +57,8 @@
 
 %%%%%%%%%%%%%%% Reference %%%%%%%%%%%%%%%
 
-\printbibliography
+\printbibliography[heading=bibintoc]
 \printindex
 
 \end{document}
+

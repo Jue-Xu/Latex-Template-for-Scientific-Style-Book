@@ -21,7 +21,7 @@ notes.toc
 notes.bcf
 notes.run.xml
 __latexindent_temp.tex
-
+*.glstex
 *.ist
 
 ## Core latex/pdflatex auxiliary files:

@@ -1,10 +1,13 @@
 % !TEX root = ../notes_template.tex
-\chapter{Preface}
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+\lipsum % dummy text - remove from real document
 
 \section{Features of this template}
 
 \begin{itemize}
-    \item different styles of clickable definitions and theorems
+    \item crossref: different styles of clickable definitions and theorems
     \begin{itemize}
         \item nameref:
             \nameref{def:gaussian_distribution}
@@ -25,9 +28,19 @@
         \cite{childsUniversalComputationQuantum2009}
     \item index
     \myindex{index} 
-    \item glossary
-    \gls{real_number}
+    \item glossary:
+    \gls{real_number},
+    \gls{natural_number},
+    \gls{complex_number},
+    \gls{svm},
+    \gls{v}
+    \begin{itemize}
+        \item glossary package
+        \item glossary-extra package and bib2gls
+    \end{itemize}
 \end{itemize}
+
+\subsection{Cross reference}
 
 \begin{figure}[!ht]
     \centering
