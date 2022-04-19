@@ -1,11 +1,12 @@
 # Latex-template
 
 ## Features
-
+![](Preface.png)
 - Cross-refs: link of definitions and theorems
-- toc, list of theorems, definitions
-- bib, hyperlink
-- index, glossary
+- toc: list of theorems, definitions, minitoc
+- header and footer: hyperlink
+- bib: hyperlink, backref, custom entry
+- index, glossary, symbol
 - clean
 
 ## Related Tools

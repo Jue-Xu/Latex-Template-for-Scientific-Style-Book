@@ -19,17 +19,19 @@
 % \usepackage{fullpage}
 \usepackage{lipsum} % provides dummy text for testing
 \usepackage[toc,title,titletoc,header]{appendix}
+\usepackage{minitoc}
 \usepackage{color}
 \usepackage{multicol} % two-col ToC
 \usepackage{bm}
 \usepackage{imakeidx} % before hyperref
 \usepackage{hyperref}
 \hypersetup{
-    %citecolor=black,
     colorlinks=true,
-    % linkcolor=blue,
-    filecolor=magenta,      
+    citecolor=magenta,
+    linkcolor=blue,
+    filecolor=green,      
     urlcolor=cyan,
+    % hypertexnames=false,
 }
 \usepackage[capitalise]{cleveref}
 \usepackage{subcaption}
@@ -92,18 +94,34 @@ delim_0 "\\nobreak\\dotfill"
 \makeindex[columns=3, intoc, title=Alphabetical Index, options= -s index.ist]
 %%%%%%%%%%%%%%%% index %%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%% ToC %%%%%%%%%%%%%%%%%%%%%
+% Link Chapter title to ToC: https://tex.stackexchange.com/questions/32495/linking-the-section-text-to-the-toc
+\usepackage[explicit]{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ {\thechapter}}{20pt}{\hyperlink{chap-\thechapter}{\Huge#1}
+\addtocontents{toc}{\protect\hypertarget{chap-\thechapter}{}}}
+\titleformat{name=\chapter,numberless}
+  {\normalfont\huge\bfseries}{}{-20pt}{\Huge#1}
+
 %%%%%%%%%%%%%%%%%%% fancyhdr %%%%%%%%%%%%%%%%%
 \usepackage{fancyhdr}
 \pagestyle{fancy} % enable fancy page style
 \renewcommand{\headrulewidth}{0.0pt} % comment if you want the rule
 \fancyhf{} % clear header and footer
-\fancyhead[re]{\slshape\nouppercase{\leftmark}}
-\fancyhead[lo]{\slshape\nouppercase{\rightmark}}
-\fancyhead[ro,le]{\thepage} % page number left(odd), right(even)
+\fancyhead[lo,le]{\leftmark}
+\fancyhead[re,ro]{\rightmark}
+\fancyfoot[CE,CO]{\hyperref[toc-contents]{\thepage}}
+
+% https://tex.stackexchange.com/questions/550520/making-each-page-number-link-back-to-beginning-of-chapter-or-section
+\makeatletter
+\def\chaptermark#1{\markboth{\protect\hyper@linkstart{link}{\@currentHref}{Chapter \thechapter ~ #1}\protect\hyper@linkend}{}}
+\def\sectionmark#1{\markright{\protect\hyper@linkstart{link}{\@currentHref}{\thesection ~ #1}\protect\hyper@linkend}}
+\makeatother
 %%%%%%%%%%%%%%%%%%% fancyhdr %%%%%%%%%%%%%%%%%
 
+
 %%%%%%%%%%%%%%%%%%% biblatex %%%%%%%%%%%%%%%%%
-\usepackage[doi=false,url=false,isbn=false,style=alphabetic,backend=biber]{biblatex}
+\usepackage[doi=false,url=false,isbn=false,style=alphabetic,backend=biber,backref=true]{biblatex}
 \addbibresource{bib.bib}
 
 \newbibmacro{string+doiurlisbn}[1]{%
@@ -133,6 +151,21 @@ delim_0 "\\nobreak\\dotfill"
 \DeclareFieldFormat{booktitle}{#1\isdot}
 % https://tex.stackexchange.com/questions/10682/suppress-in-biblatex
 \renewbibmacro{in:}{}
+% add video field: https://tex.stackexchange.com/questions/111846/biblatex-2-custom-fields-only-one-is-working
+\DeclareSourcemap{
+    \maps[datatype=bibtex]{
+      \map{
+        \step[fieldsource=video]
+        \step[fieldset=usera,origfieldval]
+    }
+  }
+}
+\DeclareFieldFormat{usera}{\href{#1}{\textsc{Online video}}}
+\AtEveryBibitem{
+    \csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry
+        \iffieldundef{usera}{}{\space \printfield{usera}}
+    }
+}
 %%%%%%%%%%%%%%%%%%% biblatex %%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%% glossaries-extra %%%%%%%%%%%%%%%%%

@@ -1,49 +1,139 @@
 % !TEX root = ../notes_template.tex
 \chapter*{Preface}
 \addcontentsline{toc}{chapter}{Preface}
+\minitoc
 
-\lipsum % dummy text - remove from real document
+% \lipsum % dummy text - remove from real document
 
 \section{Features of this template}
-
+\subsection{crossref}
+different styles of clickable definitions and theorems
 \begin{itemize}
-    \item crossref: different styles of clickable definitions and theorems
-    \begin{itemize}
-        \item nameref:
-            \nameref{def:gaussian_distribution}
+	\item nameref:
+		\nameref{def:gaussian_distribution}
 
-        \item autoref:
-            \autoref{def:gaussian_distribution}
+	\item autoref:
+		\autoref{def:gaussian_distribution}
 
-        \item cref:
-            \cref{def:gaussian_distribution}
+	\item cref:
+		\cref{def:gaussian_distribution}
 
-        \item hyperref:
-            \hyperref[def:gaussian_distribution]{Gaussian}
-    \end{itemize}
-
-    \item toc: list of theorems, definitions
-    \item bib: titles of reference is linked to the publisher webpage 
-        \cite{kitaev2002classical}
-        \cite{childsUniversalComputationQuantum2009}
-    \item index
-    \myindex{index} 
-    \item glossary:
-    \gls{real_number},
-    \gls{natural_number},
-    \gls{complex_number},
-    \gls{svm},
-    \gls{v}
-    \begin{itemize}
-        \item glossary package
-        \item glossary-extra package and bib2gls
-    \end{itemize}
+	\item hyperref:
+		\hyperref[def:gaussian_distribution]{Gaussian}
 \end{itemize}
 
-\subsection{Cross reference}
+\subsection{ToC (Table of Content)}
+\begin{itemize}
+	\item mini toc of sections at the beginning of each chapter
+	\item list of theorems, definitions, figures
+	\item the chapter titles are bi-directional linked
+\end{itemize}
 
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=1\linewidth]{./figure/elliptic_curves.pdf}
-    \caption{Elliptic curves}
-\end{figure}
+\subsection{header and footer}
+fancyhdr
+\begin{itemize}
+	\item right header: section name and link to the beginning of the section
+	\item left header: chapter title and link to the beginning of the chapter
+	\item footer: page number linked to ToC of the whole document
+\end{itemize}
+
+\subsection{bib}
+\begin{itemize}
+	\item titles of reference is linked to the publisher webpage e.g., \cite{kitaev2002classical}
+	\item backref (go to the page where the reference is cited) e.g., \cite{childsUniversalComputationQuantum2009}
+	\item customized video entry in reference like in \cite{babaiGraphIsomorphismQuasipolynomial2016}
+\end{itemize}
+
+\subsection{preface, index and appendix}
+\myindex{index} page at the end of this document...
+
+\subsection{symbol and glossary (abbreviation)}
+examples: \gls{real_number},
+\gls{natural_number},
+\gls{complex_number},
+\gls{svm},
+\gls{v}
+
+\subsubsection{usage}
+\begin{itemize}
+	\item glossary package 
+	\begin{verbatim}
+		pdflatex notes_template.tex
+		makeglossaries notes_template
+		pdflatex notes_template.tex	
+	\end{verbatim}
+
+	\item glossary-extra package and bib2gls
+	\begin{verbatim}
+		pdflatex notes_template.tex
+		bib2gls notes_template
+		pdflatex notes_template.tex	
+	\end{verbatim}
+\end{itemize}
+
+\section{Related Tools}
+\subsection{VSCode}
+Extension: \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{Latex Workshop by James Yu}
+
+\subsubsection{settings}
+
+\subsection{lualatex and latexmk}
+.latexmkrc configuration file
+\begin{verbatim*}
+	$pdflatex = 'lualatex -synctex=1 -interaction=nonstopmode --shell-escape %O %S';
+	@generated_exts = (@generated_exts, 'synctex.gz');
+	$pdf_mode = 1;
+
+	add_cus_dep('glo', 'gls', 0, 'makeglo2gls');
+	sub makeglo2gls {
+		system("makeindex -s '$_[0]'.ist -t '$_[0]'.glg -o '$_[0]'.gls '$_[0]'.glo");
+	}
+\end{verbatim*}
+To explain ....
+\begin{verbatim}
+# Also delete the *.glstex files from package glossaries-extra. Problem is,
+# that that package generates files of the form "basename-digit.glstex" if
+# multiple glossaries are present. Latexmk looks for "basename.glstex" and so
+# does not find those. For that purpose, use wildcard.
+$clean_ext = "%R-*.glstex";
+
+push @generated_exts, 'glstex', 'glg';
+
+add_cus_dep('aux', 'glstex', 0, 'run_bib2gls');
+
+# PERL subroutine. $_[0] is the argument (filename in this case).
+# File from author from here: https://tex.stackexchange.com/a/401979/120853
+sub run_bib2gls {
+    if ( $silent ) {
+    #    my $ret = system "bib2gls --silent --group '$_[0]'"; # Original version
+        my $ret = system "bib2gls --silent --group $_[0]"; # Runs in PowerShell
+    } else {
+    #    my $ret = system "bib2gls --group '$_[0]'"; # Original version
+        my $ret = system "bib2gls --group $_[0]"; # Runs in PowerShell
+    };
+
+    my ($base, $path) = fileparse( $_[0] );
+    if ($path && -e "$base.glstex") {
+        rename "$base.glstex", "$path$base.glstex";
+    }
+
+    # Analyze log file.
+    local *LOG;
+    $LOG = "$_[0].glg";
+    if (!$ret && -e $LOG) {
+        open LOG, "<$LOG";
+    while (<LOG>) {
+            if (/^Reading (.*\.bib)\s$/) {
+        rdb_ensure_file( $rule, $1 );
+        }
+    }
+    close LOG;
+    }
+    return $ret;
+}
+\end{verbatim}
+
+\section{Copyright and License}
+GitHub: \url{https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book}
+
+Overleaf: 
