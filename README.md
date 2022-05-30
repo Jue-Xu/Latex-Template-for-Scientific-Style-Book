@@ -1,28 +1,36 @@
-# Latex Template for Scientific Style Book (Notes)
+# A Latex Template for Scientific Style Book (Notes)
+
+## Preview
+
+![](./Table-of-Content.png)
+<!-- ![](./List-of.png)
+![](./List-of-Symbols.png) -->
+![](./Preface.png)
+<!-- ![](./Bib.png) -->
+
+[YouTube Preview](https://youtu.be/eR4vrsafcxk)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eR4vrsafcxk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+[Minimal working example](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/blob/main/notes_template.pdf)
+
+[Overleaf template](https://www.overleaf.com/learn/latex/Glossaries)
+
+my study notes [to do]
 
 ## Features
-![](Preface.png)
 - Cross-refs: link of definitions and theorems
 - ToC: list of theorems, definitions, minitoc
 - header and footer: hyperlink
 - bib: hyperlink, backref, custom entry
 - support index, glossary, symbol
 - clean layout
-
-
-## Preview
-[Minimal working example](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/blob/main/notes_template.pdf)
-
-[YouTube Preview](https://youtu.be/eR4vrsafcxk)
-
-[Overleaf](https://www.overleaf.com/learn/latex/Glossaries)
-
-my study notes [to do]
+- More glossary support [at branch](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/tree/glossary).
+Not work on Overleaf (see the discussion of the [issue](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/issues/2).
 
 ## Compile
-This template works fine with the [Overleaf online compiler](https://www.overleaf.com/latex/templates/latex-template-for-scientific-style-book/ntprxjksmqxx) except the Glossary part (see below for more details)
+This template (this branch) works fine with the [Overleaf online compiler](https://www.overleaf.com/latex/templates/latex-template-for-scientific-style-book/ntprxjksmqxx) except the Glossary part (see below for more details)
 
-###  lualatex and latexmk
+### Compile with your local machine: lualatex and latexmk
 `.latexmkrc` configuration file
 ```
 $pdflatex = 'lualatex -synctex=1 -interaction=nonstopmode --shell-escape %O %S';
