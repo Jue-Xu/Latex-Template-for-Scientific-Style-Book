@@ -13,6 +13,10 @@
 ## Preview
 [Minimal working example](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/blob/main/notes_template.pdf)
 
+[YouTube Preview](https://youtu.be/eR4vrsafcxk)
+
+[Overleaf](https://www.overleaf.com/learn/latex/Glossaries)
+
 my study notes [to do]
 
 ## Compile
