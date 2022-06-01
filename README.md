@@ -2,14 +2,15 @@
 
 ## Preview
 
-![](./Table-of-Content.png)
+![](./Screenshots/Table-of-Content.png)
 <!-- ![](./List-of.png)
 ![](./List-of-Symbols.png) -->
-![](./Preface.png)
+![](./Screenshots/Preface.png)
 <!-- ![](./Bib.png) -->
 
 [YouTube Preview](https://youtu.be/eR4vrsafcxk)
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eR4vrsafcxk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/eR4vrsafcxk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
 [Minimal working example](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/blob/main/notes_template.pdf)
 
@@ -43,7 +44,7 @@ sub makeglo2gls {
 }
 ```
 
-### Glossary related
+<!-- ### Glossary related
 ```
 # Also delete the *.glstex files from package glossaries-extra. Problem is,
 # that that package generates files of the form "basename-digit.glstex" if
@@ -100,7 +101,7 @@ need [Java](https://java.com/en/download/)
 pdflatex notes.tex
 bib2gls notes
 pdflatex notes.tex
-```
+``` -->
 
 ## Related Tools
 

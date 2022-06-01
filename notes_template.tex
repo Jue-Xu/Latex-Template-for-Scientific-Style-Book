@@ -185,7 +185,7 @@ delim_0 "\\nobreak\\dotfill"
 
 \begin{multicols}{2}
     \dominitoc% Initialization
-    \adjustmtc[3]% chp number shift
+    \adjustmtc[2]% chp number shift for mini-toc
     \tableofcontents
     \label{toc-contents}
 \end{multicols}
@@ -195,13 +195,17 @@ delim_0 "\\nobreak\\dotfill"
 \begin{multicols}{2}
 	\listoftheorems[ignoreall,show={theorem}]
 \end{multicols}
+
 	\renewcommand{\listtheoremname}{List of Definitions}
 \begin{multicols}{2}
 	\listoftheorems[ignoreall,show={definition}]
 \end{multicols}
 
 	% \printglossaries
-	\printglossary[title=List of terms, toctitle=List of terms]
+	% \printglossary[type=\acronymtype]
+	\printglossary
+	% \printglossary[title=List of terms, toctitle=List of terms]
+
 	% bib2gls
 	% \printunsrtglossaries % print all types
 	% \printunsrtglossary[type={abbreviations},title=List of Abbreviations,style=listgroup]
