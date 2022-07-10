@@ -135,7 +135,7 @@ Extension Setting:
         ],
         "env": {}
     }
-    }
+    ]
 ```
 
 ### Zotero
