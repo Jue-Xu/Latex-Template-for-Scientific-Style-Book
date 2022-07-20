@@ -53,14 +53,16 @@ a Figure example
 % algorithm2e
 % https://www.overleaf.com/learn/latex/Algorithms#The_algorithm2e_package
 \begin{algorithm}[H]
+    \DontPrintSemicolon
     \SetKwInOut{Input}{input}
     \SetKwInOut{Output}{output}
     \Input{Integer $N$ and parameter $1^t$}
     \Output{A decision as to whether $N$ is prime or composite}
     \BlankLine
     \For{ $i = 1,2, \ldots, t$} {
-        $a\leftarrow \qty{1,\dots,N_1}$\;
+        $a\leftarrow \qty{1,\dots,N_1}$  \tcp*{this is a comment}
         \If{$a^{N-1} \neq 1 \mod{N}$}
+        % \tcc{comment in a new line}
     {\Return "composite"}
     }
     \Return "prime"

@@ -40,7 +40,9 @@
 \usepackage{mathtools}
 \usepackage{physics}
 \usepackage[linesnumbered,ruled,vlined,algosection]{algorithm2e}
-\SetCommentSty{textsf}
+\newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}} % https://tex.stackexchange.com/questions/162207/algorithm2e-comment-style
+\SetCommentSty{mycommfont}
+% \SetCommentSty{textsf}
 \usepackage{epigraph}
 \epigraphwidth=1.0\linewidth
 \epigraphrule=0pt
