@@ -29,7 +29,8 @@ my study notes [to do]
 Not work on Overleaf (see the discussion of the [issue](https://github.com/Jue-Xu/Latex-Template-for-Scientific-Style-Book/issues/2).
 
 ## Compile
-This template (this branch) works fine with the [Overleaf online compiler](https://www.overleaf.com/latex/templates/latex-template-for-scientific-style-book/ntprxjksmqxx) except the Glossary part (see below for more details)
+This template (this branch) works fine with the [Overleaf online compiler](https://www.overleaf.com/latex/templates/latex-template-for-scientific-style-book/ntprxjksmqxx).
+ <!-- except the Glossary part (see below for more details) -->
 
 ### Compile with your local machine: lualatex and latexmk
 `.latexmkrc` configuration file
